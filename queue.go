@@ -52,8 +52,8 @@ func NewQueue(handler Handler, concurrencyLimit int) *Queue {
 
 // Push pushes a new value to the end of the queue
 func (q *Queue) Push(val interface{}) {
-	q.push <- val
 	q.wg.Add(1)
+	q.push <- val
 }
 
 // Stop stops the queue from executing anymore tasks, and waits for the currently executing tasks to finish.
